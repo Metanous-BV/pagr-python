@@ -19,14 +19,15 @@ others as you need them.
 ## Setup
 
 ```bash
-pip install "pagr-sdk[examples]"   # adds python-dotenv
+pip install "pagr-sdk[examples] @ git+https://github.com/Metanous-BV/pagr-python.git"   # adds python-dotenv
 ```
 
-Create a `.env` file next to the scripts:
+Copy [`.env.example`](.env.example) to `.env` next to the scripts and fill in
+your keys:
 
 ```env
 TEST_KEY_PUBLIC=your-test-api-key
-PROD_KEY_PUBLIC=your-prod-api-key     # only needed by validate.py
+PROD_KEY_PUBLIC=your-prod-api-key     # needed by validate.py, render_batch.py, batch_async.py
 ```
 
 Then run any example:
