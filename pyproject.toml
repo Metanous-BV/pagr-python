@@ -1,0 +1,61 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pagr-sdk"
+dynamic = ["version"]
+description = "Python client for the Pagr document rendering API"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+authors = [{ name = "Metanous" }]
+keywords = ["pagr", "pdf", "rendering", "documents", "templates"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Framework :: AsyncIO",
+    "Typing :: Typed",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+]
+dependencies = [
+    "httpx>=0.24",
+]
+
+[project.urls]
+Homepage      = "https://github.com/Metanous-BV/pagr-python"
+Repository    = "https://github.com/Metanous-BV/pagr-python"
+Issues        = "https://github.com/Metanous-BV/pagr-python/issues"
+Documentation = "https://github.com/Metanous-BV/pagr-python/blob/main/docs/user-guide.md"
+
+[project.optional-dependencies]
+# Everything needed to run the scripts in examples/.
+examples = ["python-dotenv>=1.0"]
+# Test/development toolchain.
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21",
+    "respx>=0.20",
+    "python-dotenv>=1.0",
+]
+
+[tool.hatch.version]
+path = "pagr/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["pagr"]
+
+[tool.hatch.build.targets.sdist]
+include = ["pagr", "tests", "examples", "docs", "scripts",
+           "README.md", "LICENSE", "CHANGELOG.md", "CONTRIBUTING.md"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
