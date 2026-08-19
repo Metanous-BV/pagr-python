@@ -4,6 +4,19 @@ Async Python client for the Pagr document rendering API: manage templates, rende
 documents (single, batch, or fire-and-forget with webhooks), validate data, and
 read organisation usage stats.
 
+> [!TIP]
+> Want to chat live with Pagr engineers? Join us on our
+> [Discord server](https://discord.gg/GajJxfKXZ5).
+
+## Requirements
+
+- **Python 3.9** or later.
+- A **Pagr API key** — grab it from **Settings → API keys** in the Pagr web app.
+  The prefix picks the mode: `pagr_test_*` renders are watermarked and batches are
+  capped at 10 documents; `pagr_prod_*` renders for real and consumes credit.
+- [`httpx`](https://www.python-httpx.org/) 0.24 or later — installed for you as a
+  dependency; no other runtime packages are needed.
+
 ## Installation
 
 ```bash

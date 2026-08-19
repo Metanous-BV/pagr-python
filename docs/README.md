@@ -4,12 +4,6 @@
 API. You give it a template ID and some JSON data; it renders PDFs — one at a
 time, in batches, or as fire-and-forget background jobs with webhook callbacks.
 
-This wiki is for application developers *using* the SDK:
-
-| Doc | For | Read it if you… |
-|-----|-----|-----------------|
-| **[User Guide](./user-guide.md)** | Application developers *using* the SDK | …want to render documents from your own Python app. |
-
 Maintainer-facing setup, testing, and release conventions live in
 [CONTRIBUTING.md](../CONTRIBUTING.md) instead.
 

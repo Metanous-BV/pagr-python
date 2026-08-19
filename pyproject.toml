@@ -53,7 +53,7 @@ path = "pagr/__init__.py"
 packages = ["pagr"]
 
 [tool.hatch.build.targets.sdist]
-include = ["pagr", "tests", "examples", "docs", "scripts",
+include = ["pagr", "tests", "examples", "docs",
            "README.md", "LICENSE", "CHANGELOG.md", "CONTRIBUTING.md"]
 
 [tool.pytest.ini_options]
