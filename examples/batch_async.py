@@ -53,17 +53,10 @@ async def main():
         )
         print(f"Job {job.job_id} queued — {job.requested_count} document(s).")
 
-        # Poll by hand to show progress as the job runs. `status.done` is True
-        # once the state is terminal (completed or failed).
-        while True:
-            status = await client.get_job_status(job.job_id)
-            print(
-                f"  state={status.state}  rendered={status.rendered_count}"
-                f"/{status.requested_count}"
-            )
-            if status.done:
-                break
-            await asyncio.sleep(2)
+        # wait_for_job polls get_job_status for you, bounded by a 5-minute
+        # deadline by default (it raises PagrTimeoutError if that elapses),
+        # so a stuck job can never hang this await forever.
+        status = await client.wait_for_job(job.job_id, poll_interval=2)
 
         print(
             f"Job {status.job_id} finished: state={status.state} status={status.status}, "
@@ -73,10 +66,6 @@ async def main():
             print(f"  failure_reason: {status.failure_reason}")
         for issue in status.issues:
             print(f"  issue: [{issue.severity}] {issue.description}")
-
-        # Or let the SDK run the poll loop for you — a 5-minute deadline by
-        # default, so a stuck job can never hang the await forever:
-        #   status = await client.wait_for_job(job.job_id, poll_interval=2)
 
 
 if __name__ == "__main__":
